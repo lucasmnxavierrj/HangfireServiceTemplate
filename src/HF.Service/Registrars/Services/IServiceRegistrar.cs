@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace HF.Service.Registrars.Services
 {
     internal interface IServiceRegistrar : IRegistrar
     {
-        void RegisterService(IServiceCollection services);
+        IWebHostBuilder RegisterService(IWebHostBuilder builder);
     }
 }

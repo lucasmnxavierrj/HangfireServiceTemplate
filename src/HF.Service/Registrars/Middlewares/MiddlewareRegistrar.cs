@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Hangfire;
+using Microsoft.AspNetCore.Builder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,19 @@ namespace HF.Service.Registrars.Middlewares
     {
         public IApplicationBuilder RegisterMiddlewares(IApplicationBuilder app)
         {
-            throw new NotImplementedException();
+            app.UseHangfireDashboard(options: new()
+            {
+                DashboardTitle = "Hangfire Service Template",
+            });
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHangfireDashboard();
+            });
+
+            return app;
         }
     }
 }

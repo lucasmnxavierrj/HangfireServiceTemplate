@@ -1,6 +1,8 @@
 ﻿using HF.Service.Registrars;
+using HF.Service.Registrars.Middlewares;
 using HF.Service.Registrars.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,18 +14,23 @@ namespace HF.Service.Extensions
 {
     internal static class BuilderExtensions
     {
-        public static IServiceCollection RegisterServices(this IServiceCollection services, Type scanningType)
+        public static IWebHostBuilder RegisterServices(this IWebHostBuilder builder, Type scanningType)
         {
             var registrars = GetRegistrars<IServiceRegistrar>(scanningType);
 
             foreach (var registrar in registrars)
-                registrar.RegisterService(services);
+                registrar.RegisterService(builder);
 
-            return services;
+            return builder;
         }
 
         public static IApplicationBuilder RegisterMiddlewares(this IApplicationBuilder app, Type scanningType)
         {
+            var registrars = GetRegistrars<IMiddlewareRegistrar>(scanningType);
+
+            foreach (var registrar in registrars)
+                registrar.RegisterMiddlewares(app);
+
             return app;
         }
 

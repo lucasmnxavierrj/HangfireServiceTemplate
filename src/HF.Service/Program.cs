@@ -1,14 +1,22 @@
-﻿using HF.Service.Extensions;
+﻿using HF.Service;
+using HF.Service.Extensions;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 var host = Host.CreateDefaultBuilder(args)
+    .ConfigureWebHostDefaults(builder =>
+    {
+        builder.RegisterServices(typeof(Program));
 
-    .ConfigureWebHostDefaults(builder => 
-        builder.Configure(app => 
-            app.RegisterMiddlewares(typeof(Program))))
+        builder.Configure(app =>
+            app.RegisterMiddlewares(typeof(Program)));
 
-    .ConfigureServices(services => 
-        services.RegisterServices(typeof(Program)));
+        //builder.ConfigureServices(services =>
+        //{
+        //    services.AddHostedService<Worker>();
+        //});
+    });
 
 host.Build().Run();
