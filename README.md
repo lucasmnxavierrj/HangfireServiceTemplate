@@ -5,14 +5,14 @@ This solution provides a robust template for managing recurrent (daily, weekly, 
 ## Key Features
 
 - **Modular Structure**: The solution is structured into three projects:
-  - **HF.Service**: Hosts the Hangfire server using an OWIN-based Windows Service application.
+  - **HF.Server**: Hosts the Hangfire server using an OWIN-based Windows Service application.
   - **HF.Jobs**: Contains job definitions segregated into folders for different types of jobs (daily, weekly, monthly, immediate).
   - **HF.API**: Provides a minimal API with an example endpoint for triggering immediate job executions.
 
 - **Dynamic Job Scheduling**: Jobs are dynamically scheduled using Hangfire's capabilities, allowing for easy addition, removal, and management of recurrent and immediate tasks.
 
 - **Middleware and Service Registrars**: Utilizes middleware and service registrars for clean and organized configuration:
-  - **BuilderExtensions.cs** in **HF.Service** automates service registration based on interfaces, ensuring a scalable and maintainable dependency injection setup.
+  - **BuilderExtensions.cs** in **HF.Server** automates service registration based on interfaces, ensuring a scalable and maintainable dependency injection setup.
   - **EndpointsMapping.cs** in **HF.API** defines API endpoints for immediate job execution, encapsulating job triggering logic with error handling and response formatting.
 
 - **Error Handling and Logging**: Integrated logging with Microsoft.Extensions.Logging ensures comprehensive error handling and job execution monitoring.
@@ -34,9 +34,9 @@ This solution provides a robust template for managing recurrent (daily, weekly, 
 
 ## Configuration
 
-1. **Update Connection Strings**: Configure the connection string in `appsettings.json` for both **HF.Service** and **HF.API** projects to point to your database.
+1. **Update Connection Strings**: Configure the connection string in `appsettings.json` for both **HF.Server** and **HF.API** projects to point to your database.
 
-2. **Run Hangfire Server**: Build and run the **HF.Service** project to start the Hangfire server. This automatically sets up Hangfire with SQL Server storage.
+2. **Run Hangfire Server**: Build and run the **HF.Server** project to start the Hangfire server. This automatically sets up Hangfire with SQL Server storage.
 
 ## Usage
 
