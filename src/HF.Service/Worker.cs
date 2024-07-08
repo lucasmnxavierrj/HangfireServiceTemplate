@@ -1,4 +1,6 @@
-﻿using Hangfire.Server;
+﻿using Hangfire;
+using Hangfire.Server;
+using HF.Service.Schedules;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,9 @@ namespace HF.Service
     {
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
-
+            DailySchedule.ScheduleJobs(cancellationToken);
+            WeeklySchedule.ScheduleJobs(cancellationToken);
+            MonthlySchedule.ScheduleJobs(cancellationToken);
         }
     }
 }

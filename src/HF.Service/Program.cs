@@ -12,11 +12,6 @@ var host = Host.CreateDefaultBuilder(args)
 
         builder.Configure(app =>
             app.RegisterMiddlewares(typeof(Program)));
-
-        //builder.ConfigureServices(services =>
-        //{
-        //    services.AddHostedService<Worker>();
-        //});
     });
 
 host.Build().Run();

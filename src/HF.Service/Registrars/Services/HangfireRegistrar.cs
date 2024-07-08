@@ -25,7 +25,7 @@ namespace HF.Service.Registrars.Services
                     config.UseSqlServerStorage(connectionString, new SqlServerStorageOptions
                     {
                     });
-            });
+                });
 
                 services.AddHangfireServer();
             });
