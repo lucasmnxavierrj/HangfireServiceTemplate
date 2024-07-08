@@ -8,9 +8,7 @@ builder.Services.AddHangfire(config =>
 {
     var connectionString = builder.Configuration.GetConnectionString("Default");
 
-    config.UseSqlServerStorage(connectionString, new SqlServerStorageOptions
-    {
-    });
+    config.UseSqlServerStorage(connectionString);
 });
 
 builder.Services.AddEndpointsApiExplorer();

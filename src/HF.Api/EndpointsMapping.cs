@@ -13,9 +13,11 @@ namespace HF.Api
             {
                 try
                 {
-                    var queueNumber = job.Enqueue<ImmediateJobExample>(x => x.StartAsync(cancellationToken));
+                    var queueNumber = job.Enqueue<ImmediateJobExample>(x => x.ExecuteProcessAsync(cancellationToken));
 
-                    return Results.Ok(new { Message = "Job triggered successfully", QueueNumber = queueNumber });
+                    return Results.Ok(new { 
+                        Message = "Job triggered successfully", 
+                        QueueNumber = queueNumber });
                 }
                 catch (Exception ex)
                 {
