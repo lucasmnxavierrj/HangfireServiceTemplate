@@ -1,6 +1,6 @@
 # Hangfire Template for Recurrent and Immediate Jobs
 
-This solution provides a robust template for managing recurrent (daily, weekly, monthly) and immediate jobs using Hangfire in .NET 8. It is designed to be highly modular and extensible, facilitating easy job management and scheduling.
+This solution provides a template for managing recurrent (daily, weekly, monthly) and immediate jobs using Hangfire in .NET 8. It is designed to be modular and extensible, facilitating job management and scheduling.
 
 ## Key Features
 
